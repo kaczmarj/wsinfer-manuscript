@@ -16,7 +16,7 @@ echo "GPU being monitored by pid $gpu_stats_pid"
 
 date > $datepath
 
-apptainer run --nv \
+singularity run --nv \
 	--containall \
 	--pwd /quip_app/til_classification/u24_lymphocyte/scripts/ \
 	--env CUDA_VISIBLE_DEVICES=2 \

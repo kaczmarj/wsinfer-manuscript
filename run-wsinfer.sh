@@ -16,7 +16,7 @@ echo "GPU being monitored by pid $gpu_stats_pid"
 
 date > $datepath
 
-apptainer run \
+singularity run \
 	--nv \
 	--pwd $PWD \
 	--env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
