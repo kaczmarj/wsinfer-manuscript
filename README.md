@@ -21,8 +21,11 @@ Then run the following to run both TIL detection pipelines. The time and GPU
 statistics are recorded automatically.
 
 ```bash
-# Download containers.
-bash setup.sh
+# Download Frontier TILs container.
+singularity pull docker://kaczmarj/frontiers-til:cede545
+
+# Download wsinfer TILs container (uses same model as Frontier TILs inceptionv4).
+singularity pull docker://kaczmarj/wsinfer:0.3.6-tils
 
 # Run wsinfer pipeline.
 OMP_NUM_THREADS=16 CUDA_VISIBLE_DEVICES=2 screen -S wsinfer bash run-wsinfer.sh
