@@ -17,16 +17,16 @@ slides/
 └── TCGA-A6-2674-01Z-00-DX1.svs
 ```
 
-The run `bash setup.sh` to download the containers.
-
-Run WSInfer.
+Then run the following to run both TIL detection pipelines. The time and GPU
+statistics are recorded automatically.
 
 ```bash
+# Download containers.
+bash setup.sh
+
+# Run wsinfer pipeline.
 OMP_NUM_THREADS=16 CUDA_VISIBLE_DEVICES=2 screen -S wsinfer bash run-wsinfer.sh
-```
 
-Run Frontiers. Do this when the WSInfer pipeline is done.
-
-```
+# Run frontiers pipeline.
 OMP_NUM_THREADS=16 CUDA_VISIBLE_DEVICES=2 screen -S frontiers bash run-frontiers.sh
 ```
