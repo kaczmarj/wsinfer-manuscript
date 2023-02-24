@@ -19,4 +19,14 @@ slides/
 
 The run `bash setup.sh` to download the containers.
 
-Then run `CUDA_VISIBLE_DEVICES=0 bash run-wsinfer.sh` and then `CUDA_VISIBLE_DEVICES=0 bash run-frontiers.sh`.
+Run WSInfer.
+
+```bash
+OMP_NUM_THREADS=16 CUDA_VISIBLE_DEVICES=2 screen -S wsinfer bash run-wsinfer.sh
+```
+
+Run Frontiers. Do this when the WSInfer pipeline is done.
+
+```
+OMP_NUM_THREADS=16 CUDA_VISIBLE_DEVICES=2 screen -S frontiers bash run-frontiers.sh
+```
