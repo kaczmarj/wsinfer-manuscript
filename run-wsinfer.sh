@@ -24,7 +24,7 @@ singularity run \
 	--bind $PWD wsinfer_0.3.6-tils.sif run \
 		--wsi-dir slides/ \
 		--results-dir results-wsinfer/ \
-		--batch-size 128 \
+		--batch-size 64 \
 		--num-workers 8 &
 
 wait

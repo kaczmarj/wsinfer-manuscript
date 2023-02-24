@@ -19,11 +19,10 @@ date > $datepath
 singularity run --nv \
 	--containall \
 	--pwd /quip_app/til_classification/u24_lymphocyte/scripts/ \
-	--env CUDA_VISIBLE_DEVICES=2 \
 	--env MODEL_CONFIG_FILENAME="config_incep-mix-new3_test_ext.ini" \
 	--env HEATMAP_VERSION_NAME="lym_incep-mix_probability" \
 	--env BINARY_HEATMAP_VERSION_NAME='lym_incep-mix_binary' \
-	--env LYM_PREDICTION_BATCH_SIZE=128 \
+	--env LYM_PREDICTION_BATCH_SIZE=64 \
 	--env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
 	--bind $PWD/frontiers-output:/quip_app/til_classification/u24_lymphocyte/data \
 	--bind $PWD/slides:/quip_app/til_classification/u24_lymphocyte/data/svs \
