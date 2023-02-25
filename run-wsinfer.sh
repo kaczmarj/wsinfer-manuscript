@@ -25,6 +25,7 @@ singularity run \
 		--results-dir results-wsinfer/ \
 		--batch-size 64 \
 		--num-workers 8 &
+
 pipeline_pid=$!
 echo "Running pipeline in PID $pipeline_pid"
 
@@ -32,4 +33,3 @@ echo "Running pipeline in PID $pipeline_pid"
 wait $pipeline_pid
 
 date >> $datepath
-
