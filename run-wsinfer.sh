@@ -4,15 +4,14 @@ set -eu
 
 datepath="times-wsinfer-$(date +%s).txt"
 
+# Kill all background process when the script exits.
+# https://stackoverflow.com/a/2173421/5666087
+trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+
 echo "Saving times to $datepath"
 
 # Collect gpu stats in the background.
 bash get-gpu-stats.sh gpu-stats-wsinfer.csv &
-
-# Kill gpu stats monitor when this script exits.
-gpu_stats_pid=$!
-trap "kill $gpu_stats_pid; exit" SIGHUP SIGINT SIGTERM
-echo "GPU being monitored by pid $gpu_stats_pid"
 
 date > $datepath
 
@@ -26,8 +25,11 @@ singularity run \
 		--results-dir results-wsinfer/ \
 		--batch-size 64 \
 		--num-workers 8 &
+pipeline_pid=$!
+echo "Running pipeline in PID $pipeline_pid"
 
-wait
+# Wait for the pipeline to finish.
+wait $pipeline_pid
 
 date >> $datepath
 
