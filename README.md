@@ -1,6 +1,6 @@
 # WSInfer Manuscript
 
-We use the first 10 DX1 slides from TCGA-COAD. To reproduce our results, 
+We use the first 10 DX1 slides from TCGA-COAD. To reproduce our results,
 please download these 10 SVS files and place them in the `slides` directory.
 
 ```
@@ -28,8 +28,8 @@ singularity pull docker://kaczmarj/frontiers-til:cede545
 singularity pull docker://kaczmarj/wsinfer:0.3.6-tils
 
 # Run wsinfer pipeline.
-OMP_NUM_THREADS=16 CUDA_VISIBLE_DEVICES=2 screen -S wsinfer bash run-wsinfer.sh
+CUDA_VISIBLE_DEVICES=2 screen -S wsinfer bash run-wsinfer.sh
 
 # Run frontiers pipeline.
-OMP_NUM_THREADS=16 CUDA_VISIBLE_DEVICES=2 screen -S frontiers bash run-frontiers.sh
+CUDA_VISIBLE_DEVICES=2 screen -S frontiers bash run-frontiers.sh
 ```
