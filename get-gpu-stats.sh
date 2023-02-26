@@ -15,7 +15,7 @@ if [ -f $outputcsv ]; then
 fi
 
 write_gpu_data () {
-	nvidia-smi --id=$CUDA_VISIBLE_DEVICES --query-gpu=timestamp,index,uuid,utilization.gpu,memory.total,memory.used,memory.free,utilization.memory,temperature.gpu,pstate \
+	nvidia-smi --id=$CUDA_VISIBLE_DEVICES --query-gpu=timestamp,index,uuid,utilization.gpu,memory.total,memory.used,memory.free,utilization.memory,utilization.gpu,temperature.gpu,pstate \
 		--format=csv,noheader,nounits >> "$outputcsv"
 }
 while true; do
