@@ -2,7 +2,7 @@
 
 set -eu
 
-datepath="times-wsinfer-$(date +%s).txt"
+datepath="times-frontiers-$(date +%s).txt"
 
 # Kill all background process when the script exits.
 # https://stackoverflow.com/a/2173421/5666087
@@ -12,6 +12,8 @@ echo "Saving times to $datepath"
 
 # Collect gpu stats in the background.
 bash get-gpu-stats.sh gpu-stats-frontiers.csv &
+
+mkdir -p frontiers-output
 
 date > $datepath
 
